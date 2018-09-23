@@ -1,0 +1,73 @@
+int WSAGetLastError(void);   // Получить диагностирующий код ошибки > код
+
+int WSAStartup(		// инициализировать библиотеку WS2_32.DLL > 0 : !0
+          WORD         	ver,  	//[in]  версия  Windows Sockets  
+          lpWSAData    	wsd   	//[out] указатель на WSADATA 
+);
+
+int WSACleanup(void);  // завершить  работу с библиотекой  WS2_32.DLL > 0 : SOCKET_ERROR
+
+SOCKET socket(	// создать сокет  > дескриптор сокета : INVALID_SOCKET
+            int    af,   	//[in]  формат адреса  (AF_INET для стека TCP/IP)
+            int    type,	//[in]  тип сокета   (SOCK_DGRAM (UDP), SOCK_STREEM (TCP))
+)
+            int    prot  	//[in]  протокол (NULL для TCP/IP)
+		     );
+
+SOCKET closesocket(  // закрыть существующий  сокет > нуль : SOCKET_ERROR
+              SOCKET s,    //[in] дескриптор сокета   
+		     );
+
+int bind(		// связать сокет с параметрами > нуль : SOCKET_ERROR
+     SOCKET s,            // [in] сокет
+     cost struct sockaddr_in*  a, //[in] указатель на SOCKADDR_IN
+     int    la                   // [in] длина SOCKADDR_IN в байтах
+          )      
+
+u_short htons (	// преобразовать  u_short в формат TCP/IP > 16  битов в формате TCP/IP
+               u_short hp  // [in] 16 битов данных  
+                  ); 
+
+int listen(		// переключить сокет в режим прослушивания > нуль : SOCKET_ERROR
+        SOCKET s,    	// [in] дескриптор связанного сокета
+          int    mcq, 	// [in] максимальная длина очереди                 
+          );      
+
+SOKET accept(	// разрешить подключение к сокету > декср-р нового сокета : INVALID_SOCKET 
+       SOCKET s,          // [in]  дескриптор связанного сокета
+         struct sockaddr_in* a,	// [out] указатель на SOCKADDR_IN 
+         int* la               	// [out] указатель на длину SOCKADDR_IN                 
+             );      
+
+int connect (	// установить соединение с сокетом > нуль : SOCKET_ERROR
+       SOCKET s,          // [in] дескриптор связанного сокета
+         struct sockaddr_in* a, // [in] указатель на SOCKADDR_IN 
+         int  la                // [in] длина SOCKADDR_IN в байтах                
+             );      
+
+int send (		// отправить данные по установленному каналу > кол-во байт : SOCKET_ERROR
+       SOCKET s,        // [in] дескриптор сокета (канал для передачи) 
+         const char* buf, // [in] указатель буфер данных
+         int  lbuf,       // [in] количество байт данных в буфере
+         int  flags       // [in] индикатор особого режима маршрутизации      
+            );      
+
+  int recv (		// принять данные по установленному каналу > кол-во байт : SOCKET_ERROR
+       SOCKET s,        // [in] дескриптор сокета (канал для приема) 
+         const char* buf, // [in] указатель буфер данных
+         int  lbuf,       // [in] количество байт данных в буфере
+         int  flags       // [in] индикатор  
+            );      
+
+
+
+
+
+
+
+
+
+
+
+
+
